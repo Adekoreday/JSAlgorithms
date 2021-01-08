@@ -1,27 +1,23 @@
-
-function BinarySearch(arr, elem){
-  let start= 0;
-  let end = arr.length - 1;
-  let middle = Math.floor((end)/2);
-    console.log(start,middle,end);
-  while(arr[middle] !== elem && start <= end)
-  {
-    
-    if(arr[middle] > elem){
-      end = middle - 1;
-      console.log("reducing end...");
-    }else{
-      start = middle + 1;
-        console.log("increasing start...");
+const binarysearch = (arr, val) => {
+  let middle = Math.floor((arr.length - 1)/2);
+  let leftpointer = 0;
+  let rightpointer = arr.length - 1;
+  let searchValue = {element: 0, index: 0};
+  while(arr[middle] !== val ) {
+    if(arr[middle] > val) {
+      rightpointer = middle - 1;
     }
-    middle = Math.floor((end + start)/2);
-    console.log(start,middle,end);
+    if(arr[middle] < val) {
+      leftpointer = middle + 1;
+    }
+    if(leftpointer > rightpointer) break;
+    middle = Math.floor((rightpointer + leftpointer)/2)
   }
-  if(arr[middle] === elem){
-    return middle
-  }return -1;
+   searchValue.element = arr[middle] === val ?  searchValue = {element: arr[middle], index: middle} :
+   searchValue = {element: -1, index: undefined} ;
+   return searchValue;
 }
 
-//[1,2,3,4,5,6]
+const arr = [1,2,3,4,5,6,7,8];
 
-module.exports = BinarySearch;
+binarysearch(arr, 8)
