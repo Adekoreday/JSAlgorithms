@@ -21,3 +21,15 @@ var reverseList = function(head) {
     }
   return prev;
 };
+
+//recursively
+
+// var reverseList = function(head) {
+//     if(head == null) return null;
+//     if(!head.next) return head;
+    
+//    let node = reverseList(head.next)
+//    head.next.next=head; //this set node.next=head
+//    head.next=null;
+//    return node;
+// }
